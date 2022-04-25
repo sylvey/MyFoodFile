@@ -1,5 +1,6 @@
 import { Text,Image, StyleSheet } from 'react-native';
-import Header, { HeaderCenterContainer, HeaderLeftRightBtton } from '../components/Header';
+import SearchBar from "../components/SearchBar";
+import Header, { HeaderBack, HeaderCenterContainer, HeaderLeftLogo, HeaderLeftRightBtton, SearchBarContainer } from '../components/Header';
 import { Background, Scroll } from '../components/Screens';
 
 
@@ -7,6 +8,7 @@ const Home = () =>{
     return (
         <Background>
             <Scroll>
+                <HeaderBack/>
                 <Text>home</Text>
                 <Text>home</Text>
                 <Text>home</Text>
@@ -174,11 +176,8 @@ const Home = () =>{
                 <Text>last</Text>
             </Scroll>
             <Header>
-                <HeaderLeftRightBtton src={require("../assets/settings.png")}/>
-                <HeaderCenterContainer><Image source={require("../assets/homeLogo.png")} style={styles.logo}/></HeaderCenterContainer>
-                <HeaderLeftRightBtton src={require("../assets/plus.png")}/>
-                
-                {/* <Image source={require("../assets/homeLogo.png")} style = {styles.logo}/> */}
+                <HeaderLeftLogo src={require("../assets/homeLogo.png")}></HeaderLeftLogo>
+                <SearchBarContainer><SearchBar/></SearchBarContainer>
             </Header>
         </Background>
     )

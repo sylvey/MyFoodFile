@@ -1,11 +1,12 @@
 import { Text } from 'react-native';
-import Header from '../components/Header';
+import Header, { HeaderBack } from '../components/Header';
 import { Background, Scroll } from '../components/Screens';
 
 const MapScreen = () =>{
     return (
         <Background>
             <Scroll>
+                <HeaderBack></HeaderBack>
                 <Text>map</Text>
                 <Text>map</Text>
                 <Text>map</Text>

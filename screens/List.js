@@ -1,11 +1,12 @@
 import { Text } from 'react-native';
-import Header from '../components/Header';
+import Header, { HeaderBack } from '../components/Header';
 import { Background, Scroll } from '../components/Screens';
 
 const List = () =>{
     return (
         <Background>
             <Scroll>
+                <HeaderBack></HeaderBack>
                 <Text>list</Text>
                 <Text>list</Text>
                 <Text>list</Text>
@@ -172,7 +173,10 @@ const List = () =>{
                 <Text>list</Text>
                 <Text>last</Text>
             </Scroll>
-            <Header/>
+            <Header>
+                <HeaderLeftLogo src={require("../assets/homeLogo.png")}></HeaderLeftLogo>
+                <SearchBarContainer><SearchBar/></SearchBarContainer>
+            </Header>
         </Background>
     )
 }
