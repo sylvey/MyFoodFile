@@ -43,12 +43,19 @@ const HeaderLeftRightButtonSubContainer = styled(TouchableOpacity)`
 const HeaderLeftRightButtonImage = styled(Image)`
     width: 28;
     height: 28;
+    tint-color: #D0A129;
 `
 const HeaderCenterContainer = styled.View`
     display: flex;
     flex: 3;
     flex-direction: column;
     align-items: center;
+`
+const Title = styled(Text)`
+    color: #817F7F;
+    font-size: 24;
+    font-weight: bold;
+    font-family: 'Inter-Black';
 `
 const HeaderLeftRightBtton = ({src}) =>{
     return(
@@ -58,6 +65,14 @@ const HeaderLeftRightBtton = ({src}) =>{
             </HeaderLeftRightButtonSubContainer>
         </HeaderLeftRightButtonContainer>
     )
+}
+
+const HeaderCenterTitle = ({title}) =>{
+    return(
+        <HeaderCenterContainer>
+            <Title>{title}</Title>
+        </HeaderCenterContainer>
+    );
 }
 
 
@@ -95,7 +110,7 @@ export default Header;
 export {HeaderBack};
 // for personal and others
 export {HeaderLeftRightBtton};
-export {HeaderCenterContainer};
+export {HeaderCenterTitle};
 // for home and list
 export {HeaderLeftLogo};
 export {SearchBarContainer};

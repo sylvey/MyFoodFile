@@ -1,6 +1,7 @@
 import { Text } from 'react-native';
-import Header, { HeaderBack } from '../components/Header';
+import Header, { HeaderBack, HeaderLeftLogo, SearchBarContainer } from '../components/Header';
 import { Background, Scroll } from '../components/Screens';
+import SearchBar from "../components/SearchBar";
 
 const List = () =>{
     return (

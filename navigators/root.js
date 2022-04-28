@@ -35,6 +35,7 @@ const Root = () => {
         <Stack.Screen
             name="Add"
             component={Add}
+            options={{headerShown: false}}
         />
     </Stack.Navigator>
   );

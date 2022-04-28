@@ -8,7 +8,7 @@ const Container = styled.View`
     display: flex;
     flex-direction: row;
     background-color: #FEEFC7;
-    height: 25;
+    height: 30;
     width: 90%;
     border-radius: 5;
     align-items: center;

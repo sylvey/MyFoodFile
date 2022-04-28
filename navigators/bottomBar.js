@@ -20,7 +20,7 @@ function BottomTabs() {
   const navigation = useNavigation();
   return (
     <>
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{tabBarHideOnKeyboard: true}}>
       <Tab.Screen 
         name="Home" 
         component={Home} 
