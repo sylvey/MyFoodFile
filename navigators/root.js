@@ -7,6 +7,7 @@ import SignIn from '../screens/Login/SignInAndUp/SignIn';
 import SignUp from '../screens/Login/SignInAndUp/SignUp';
 import BottomTabs from './bottomBar';
 import Add from '../screens/Add';
+import Detail from '../screens/Detail';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,11 @@ const Root = () => {
         <Stack.Screen
             name="Add"
             component={Add}
+            options={{headerShown: false}}
+        />
+        <Stack.Screen
+            name="Detail"
+            component={Detail}
             options={{headerShown: false}}
         />
     </Stack.Navigator>

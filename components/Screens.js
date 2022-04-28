@@ -11,7 +11,7 @@ const Background = styled(SafeAreaView)`
 
 const Scroll = styled(ScrollView)`
     height: 100%;
-    backgroundColor: transparent;
+    width: 100%;
     overflow: scroll;
 `
 
