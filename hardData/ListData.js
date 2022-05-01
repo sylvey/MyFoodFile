@@ -128,7 +128,6 @@ export default [
                 value: '果醬'
             } 
         ], 
-
         gid: '4',
     }, 
     {
@@ -293,7 +292,6 @@ export default [
                 value: '果醬'
             } 
         ], 
-
         gid: '9',
     }, 
 ]

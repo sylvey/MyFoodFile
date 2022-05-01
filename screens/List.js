@@ -11,12 +11,15 @@ import * as Progress from 'react-native-progress';
 const List = () =>{
     const [listData, setListData] = useState([]);
     const [tag, setTag] = useState('');
+    const [keyword, setKeyword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const fetchNewData = async ()=>{
         setIsLoading(true);
-        const newData = await getListData(tag);
-        setDailyData([...dailyData, ...newData]);
-        
+        const newData = await getListData(tag, keyword);
+        setListData([...listData, ...newData]);
+        console.log(newData);
     }
 
     const loader = ()=>{
@@ -30,7 +33,9 @@ const List = () =>{
     }
 
     useEffect(async()=>{
+        console.log('useEffect');
         await fetchNewData();
+        
     },[])
 
     return (
