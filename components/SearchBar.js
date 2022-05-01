@@ -31,7 +31,7 @@ const SearchBar = () =>{
     return (
         <Container>
             <SearchIcon source={require("../assets/search.png")}></SearchIcon>
-            <SearchInput selectionColor={'#F16719'}></SearchInput>
+            <SearchInput selectionColor={'#F16719'} placeholder={"search for food file"}></SearchInput>
         </Container>
     )
 }
