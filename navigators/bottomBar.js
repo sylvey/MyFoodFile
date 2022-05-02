@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-import List from "../screens/List";
+import List from "../screens/List/List";
 import MapScreen from "../screens/Map";
 import Personal from "../screens/Personal";
 import Add from "../screens/Add";
