@@ -4,23 +4,38 @@ import Header, { HeaderBack, HeaderLeftLogo, SearchBarContainer } from '../../co
 import { Background, Scroll } from '../../components/Screens';
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import SearchBar from "../../components/SearchBar";
-import { getListData } from '../../api/List';
+import { getFoodType, getListData } from '../../api/List';
 import * as Progress from 'react-native-progress';
 import ListItem from './components/ListItem';
+import { ScrollTags, ScrollTagsBack, Tag } from '../../components/Tags';
+import { useNavigation } from '@react-navigation/native';
 
 
 const List = () =>{
     const [listData, setListData] = useState([]);
-    const [tag, setTag] = useState('');
+    const [tag, setTag] = useState('1');
     const [keyword, setKeyword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [foodType, setFoodType] = useState([]);
 
+    const navigation = useNavigation();
+
+    const toDetail = (gid) =>{
+        console.log('toDetail');
+        navigation.navigate('Detail', gid);
+    }
 
     const fetchNewData = async ()=>{
         setIsLoading(true);
         const newData = await getListData(tag, keyword);
         setListData([...listData, ...newData]);
-        console.log(newData);
+        console.log("new data: ",newData);
+    }
+
+    const fetchFoodType = async ()=>{
+        const newData = await getFoodType("");
+        setFoodType(newData);
+        console.log("tags", newData);
     }
 
     const loader = ()=>{
@@ -37,19 +52,20 @@ const List = () =>{
     useEffect(async()=>{
         console.log('useEffect');
         await fetchNewData();
-        
+        await fetchFoodType();
     },[])
 
     return (
         <Background>
             <Scroll contentContainerStyle = {styles.center}>
                 <HeaderBack></HeaderBack>
+                <ScrollTagsBack></ScrollTagsBack>
                 <FlatList
                     data={listData}
                     contentContainerStyle = {{...styles.center, ...styles.contentContainer}}
                     style={styles.listContainer}
                     // onEndReached ={fetchNewData}
-                    renderItem={ListItem}
+                    renderItem={(item)=>ListItem(item,{toDetail: toDetail})}
                     ListFooterComponent={loader}
                     keyExtractor={item=>item.gid}
                 ></FlatList>
@@ -58,6 +74,11 @@ const List = () =>{
                 <HeaderLeftLogo src={require("../../assets/homeLogo.png")}></HeaderLeftLogo>
                 <SearchBarContainer><SearchBar/></SearchBarContainer>
             </Header>
+            <ScrollTags 
+                foodType={foodType !== []? foodType: []} 
+                tag = {tag}
+                setTag = {setTag}    
+            ></ScrollTags>
         </Background>
     )
 }

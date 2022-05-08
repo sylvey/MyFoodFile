@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity, Ima
 import { statusBarHeight, windowWidth } from '../../../constant/length';
 import React from 'react';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Container = styled(View)`
     display: flex;
@@ -67,12 +69,13 @@ const Icon = styled(Image)`
 `
 
 
-const ListItem = ({item})=>{
+const ListItem = ({item}, {toDetail})=>{
 
-    const likeString = "../../../assets/like" + item.likeVal.toString() + ".png"
+    
+    // const likeString = "../../../assets/like" + item.likeVal.toString() + ".png"
     return(
         <Container>
-            <ListButton>
+            <ListButton onPress={()=>toDetail(item.gid)}>
                 <Photo source={require('../../../hardData/photoInList.png')}></Photo>
                 <CenterContainer>
                     <DateTime>{item.date + " " + item.time}</DateTime>

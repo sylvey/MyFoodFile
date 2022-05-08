@@ -27,8 +27,8 @@ const HeaderBack = styled.View`
     height: ${headerhight};
     width: ${windowWidth};
 `
-// for personal and others
-// justify-content: center;
+/* for personal and others*/
+
 const HeaderLeftRightButtonContainer = styled.View`
     display: flex;
     flex: 1;
@@ -36,6 +36,7 @@ const HeaderLeftRightButtonContainer = styled.View`
     margin-bottom: 4px;
     align-items: center;
 `
+// justify-content: center;
 const HeaderLeftRightButtonSubContainer = styled(TouchableOpacity)`
     width: 28;
     height: 28;
@@ -76,7 +77,8 @@ const HeaderCenterTitle = ({title}) =>{
 }
 
 
-// for home and list
+
+/* for home and list*/
 //for logo
 const HeaderLeftContainer = styled.View`
     display: flex;
@@ -104,6 +106,9 @@ const SearchBarContainer = styled.View`
     height: 51;
 `
 
+///for detail
+
+
 
 
 export default Header;
@@ -114,3 +119,4 @@ export {HeaderCenterTitle};
 // for home and list
 export {HeaderLeftLogo};
 export {SearchBarContainer};
+
