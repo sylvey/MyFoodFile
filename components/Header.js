@@ -58,10 +58,10 @@ const Title = styled(Text)`
     font-weight: bold;
     font-family: 'Inter-Black';
 `
-const HeaderLeftRightBtton = ({src}) =>{
+const HeaderLeftRightBtton = ({src, onPress}) =>{
     return(
         <HeaderLeftRightButtonContainer>
-            <HeaderLeftRightButtonSubContainer>
+            <HeaderLeftRightButtonSubContainer onPress = {()=>onPress()}>
                 <HeaderLeftRightButtonImage source={src}/>
             </HeaderLeftRightButtonSubContainer>
         </HeaderLeftRightButtonContainer>
@@ -106,9 +106,21 @@ const SearchBarContainer = styled.View`
     height: 51;
 `
 
-///for detail
+/*for detail*/
+//for logoImage
+const HeaderCenterLogoImg = styled(Image)`
+    width: 103px;
+    height: 68px;
+`
 
 
+const HeaderCenterLogo = ({src}) =>{
+    return (
+        <HeaderCenterContainer>
+            <HeaderCenterLogoImg source = {src}/> 
+        </HeaderCenterContainer>
+    )
+}
 
 
 export default Header;
@@ -119,4 +131,6 @@ export {HeaderCenterTitle};
 // for home and list
 export {HeaderLeftLogo};
 export {SearchBarContainer};
+// for detail
+export {HeaderCenterLogo}
 

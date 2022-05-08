@@ -20,8 +20,8 @@ const Home = () =>{
         navigation.navigate('Detail', gid);
     }
     
-    const file = (file)=>
-        <TouchableOpacity onPress={()=>toDetail(file.gid)}>
+    const file = ({item})=>
+        <TouchableOpacity onPress={()=>toDetail(item.gid)}>
             <Image style={styles.fileImage} source={require("../hardData/Photo.png")}></Image>
         </TouchableOpacity>
         

@@ -14,8 +14,26 @@ const Scroll = styled(ScrollView)`
     width: 100%;
     overflow: scroll;
 `
+const SafeAreaViewContainer = styled(SafeAreaView)`
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    overflow: scroll;
+`
+const ContentContainer = styled(View)`
+    display: flex;
+    width: 90%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+`
+
+
 
 
 export {Background};
 export {Scroll};
+export {SafeAreaViewContainer};
+export {ContentContainer};
 

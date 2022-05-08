@@ -21,7 +21,7 @@ const List = () =>{
     const navigation = useNavigation();
 
     const toDetail = (gid) =>{
-        console.log('toDetail');
+        console.log('toDetail', gid);
         navigation.navigate('Detail', gid);
     }
 

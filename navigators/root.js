@@ -7,7 +7,8 @@ import SignIn from '../screens/Login/SignInAndUp/SignIn';
 import SignUp from '../screens/Login/SignInAndUp/SignUp';
 import BottomTabs from './bottomBar';
 import Add from '../screens/Add';
-import Detail from '../screens/Detail';
+// import Detail from '../screens/Detail';
+import Detail from '../screens/Detail/Detail';
 
 const Stack = createStackNavigator();
 
