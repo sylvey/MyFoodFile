@@ -12,8 +12,9 @@ const TagContainer = styled(TouchableOpacity)`
     align-items: center;
     justify-content: center;
     padding-horizontal: 4px;
-    margin: 8px;
+    margin-horizontal: 8px;
 `
+// margin: 8px;
 
 const TagText = styled(Text)`
     color: #2E2D2D;
@@ -29,7 +30,7 @@ const TagContainerChosen = styled(TouchableOpacity)`
     align-items: center;
     justify-content: center;
     padding-horizontal: 4px;
-    margin: 8px;
+    margin-horizontal: 8px;
 `
 
 const TagTextChosen = styled(Text)`
@@ -64,8 +65,26 @@ const TagsScrollContainer = styled(ScrollView)`
     height: 40px;
     width: 100%;
     top: 117px;
+    padding: 8px;
 `
 
+const TagsScrollContainerFix = styled(ScrollView)`
+    flex: 1;
+`
+
+export const ScrollTagsFix = ({foodType, setTag}) =>{
+    return (
+        <TagsScrollContainerFix contentContainerStyle={{display: 'flex', justifyContent: 'center'}}>
+            <FlatList
+              data={foodType}
+              contentContainerStyle={styles.listRowContainer}
+              horizontal={ true }
+              renderItem={(item)=>Tag(item, { chosen: false, setTag: setTag})}
+              keyExtractor={item => item.gid}
+            />
+        </TagsScrollContainerFix>
+    )
+}
 
 export const ScrollTags = ({foodType, tag, setTag}) =>{
     return (

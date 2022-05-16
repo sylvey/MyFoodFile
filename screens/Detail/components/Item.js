@@ -102,7 +102,6 @@ const DetailItem = ({item})=>{
                         </IconContainer>
                     : null}
                     <Title numberOfLines={25}>
-                        {item.booleanObjects.map(item=>"#"+(item.value?item.trueString: item.falseString) + " ")}
                         {item.linearObjects.map(item=>"#"+item.title+item.value  + " ")}
                         {item.stringObjects.map(item=>"#"+item.value  + " ")}
                     </Title>

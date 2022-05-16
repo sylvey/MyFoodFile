@@ -10,8 +10,8 @@ const MapScreen = () =>{
                 onPress={(e)=>{console.log("native event:",e.nativeEvent)}}
                 style={{height: "100%"}}
                 initialRegion={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
+                    latitude: 25.0100,
+                    longitude: 121.3100,
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                 }}

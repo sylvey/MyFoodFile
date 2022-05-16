@@ -22,7 +22,7 @@ const SignUp = () =>{
         else{
             alert('Sign Up Fail');
         }
-        
+           
     }
 
     

@@ -132,5 +132,7 @@ export {HeaderCenterTitle};
 export {HeaderLeftLogo};
 export {SearchBarContainer};
 // for detail
-export {HeaderCenterLogo}
+export {HeaderCenterLogo};
+export {HeaderLeftRightButtonContainer};
+export {HeaderLeftRightButtonSubContainer};
 

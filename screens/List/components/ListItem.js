@@ -99,7 +99,6 @@ const ListItem = ({item}, {toDetail})=>{
                         {/* <Icon source={require()}/> */}
                     </IconContainer>
                     <Title numberOfLines={1}>
-                        {item.booleanObjects.map(item=>"#"+(item.value?item.trueString: item.falseString))}
                         {item.linearObjects.map(item=>"#"+item.title+item.value)}
                         {item.stringObjects.map(item=>"#"+item.value)}
                     </Title>

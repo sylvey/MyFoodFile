@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { TextInput } from 'react-native-gesture-handler';
 
-const Container = styled.View`
+export const Container = styled.View`
     display: flex;
     flex-direction: row;
     background-color: #FEEFC7;
@@ -18,7 +18,7 @@ const SearchIcon = styled(Image)`
     width:20;
     margin-left: 5;
 `
-const SearchInput = styled(TextInput)`
+export const SearchInput = styled(TextInput)`
     display: flex;
     flex: 1;
     height: 20;

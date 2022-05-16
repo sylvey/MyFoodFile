@@ -7,40 +7,26 @@ export default [
         food: '芒果芝芝',
         likeVal: 2, //喜好程度
         spicyVal: 1, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 3,
             },
             {
                 title: '甜度',
-                value: 9,
+                value: 4,
             },
             {
                 title: '甜度',
-                value: 9,
+                value: 2,
             },
             {
                 title: '甜度',
-                value: 9,
+                value: 5,
             },
             {
                 title: '甜度',
-                value: 9,
+                value: 1,
             },
         ],
         stringObjects: [ // 選擇題使用
@@ -60,20 +46,6 @@ export default [
         food: '芒果芝芝',
         likeVal: 4, //喜好程度
         spicyVal: 1, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
@@ -97,24 +69,10 @@ export default [
         food: '芒果芝芝',
         likeVal: 5, //喜好程度
         spicyVal: 1, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 5,
             }
         ],
         stringObjects: [ // 選擇題使用
@@ -133,24 +91,10 @@ export default [
         food: '芒果芝芝',
         likeVal: 3, //喜好程度
         spicyVal: 2, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 2,
             }
         ],
         stringObjects: [ // 選擇題使用
@@ -169,24 +113,10 @@ export default [
         food: '芒果芝芝',
         likeVal: 2, //喜好程度
         spicyVal: 4, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 3,
             }
         ],
         stringObjects: [ // 選擇題使用
@@ -206,20 +136,6 @@ export default [
         food: '芒果芝芝',
         likeVal: 2, //喜好程度
         spicyVal: 3, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
@@ -243,24 +159,10 @@ export default [
         food: '芒果芝芝',
         likeVal: 2, //喜好程度
         spicyVal: 5, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 1,
             }
         ],
         stringObjects: [ // 選擇題使用
@@ -280,24 +182,10 @@ export default [
         food: '芒果芝芝',
         likeVal: 3, //喜好程度
         spicyVal: 5, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 2,
             }
         ],
         stringObjects: [ // 選擇題使用
@@ -317,24 +205,10 @@ export default [
         food: '芒果芝芝',
         likeVal: 2, //喜好程度
         spicyVal: 1, // 辣度
-        booleanObjects:[ // 是非題使用
-            {
-                title: '太苦?', //原本設定的問題標題
-                trueString: '太苦',
-                falseString: '不苦',
-                value: false,
-            },
-            {
-                title: '太甜?', //原本設定的問題標題
-                trueString: '太甜',
-                falseString: '不甜',
-                value: true,
-            },
-        ],
         linearObjects: [ // 程度題使用
             {
                 title: '甜度',
-                value: 9,
+                value: 4,
             }
         ],
         stringObjects: [ // 選擇題使用

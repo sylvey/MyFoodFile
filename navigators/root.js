@@ -6,7 +6,7 @@ import Login from '../screens/Login/Login';
 import SignIn from '../screens/Login/SignInAndUp/SignIn';
 import SignUp from '../screens/Login/SignInAndUp/SignUp';
 import BottomTabs from './bottomBar';
-import Add from '../screens/Add';
+import Add from '../screens/Add/Add';
 // import Detail from '../screens/Detail';
 import Detail from '../screens/Detail/Detail';
 
