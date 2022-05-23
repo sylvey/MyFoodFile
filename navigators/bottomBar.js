@@ -12,6 +12,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import colors from "../constant/colors";
 import { windowWidth } from "../constant/length";
+import store from "../redux/store";
+import { Provider } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +22,7 @@ function BottomTabs() {
   const navigation = useNavigation();
   return (
     <>
+    <Provider store={store}>
     <Tab.Navigator screenOptions={{tabBarHideOnKeyboard: true}}>
       <Tab.Screen 
         name="Home" 
@@ -101,6 +104,7 @@ function BottomTabs() {
       />
       {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
     </Tab.Navigator>
+    </Provider>
     </>
   );
 }

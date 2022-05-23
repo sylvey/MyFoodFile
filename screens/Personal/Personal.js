@@ -1,26 +1,56 @@
 import { Text, Image, StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
-import { getCurrentUser } from '../../api/Personal';
+import { getCurrentUser, postUpdateSheet } from '../../api/Personal';
 import Header, { HeaderBack, HeaderCenterTitle, HeaderLeftRightBtton } from '../../components/Header';
 import { Background, Scroll } from '../../components/Screens';
 import { ProfileBackground, ProfileImage, Name, PersonalDetail } from './components/Profile';
 import { RecordBlock, RecordTab, RecordTabContainer } from './components/Record';
-
-
-
+import store from '../../redux/store';
+import { Provider, useSelector } from 'react-redux';
+import CreateSheet from './subPage/CreateSheet';
+import { useDispatch } from 'react-redux';
 
 const Personal = () =>{
 
     const [user, setUser] = useState(null);
-    const [mode, setMode] = useState(2); // 1 for 設定題目, 2 for 紀錄戰果, 3 for 圖表秀秀
+    const [mode, setMode] = useState(1); // 1 for 設定題目, 2 for 紀錄戰果, 3 for 圖表秀秀
+    
+    const questions = useSelector((state)=> state.mySheet);
+    const onSubmit = async()=>{
+        await postUpdateSheet(questions);
+    }
+    // const [questions, setQuestions] = useState([
+    //     {
+    //         title: "卡路里",
+    //         type: "3choices", // linearObject
+    //         left: "<500",
+    //         right: ">500",
+    //         gid: '0',
+    //     },
+    //     {
+    //         title: "卡路里",
+    //         type: "3choices", // linearObject
+    //         left: "<500",
+    //         right: ">500",
+    //         gid: '2',
+    //     },
+    // ]);
 
     useEffect(async () => {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
-      console.log(currentUser);
+    //   console.log(currentUser);
+    //   console.log('questions1:', questions);
     }, [])
+
+    useEffect(()=>{
+        // console.log('questions1', questions);
+    }, [questions])
+
+    
     
     return (
+        
         <Background>
             <Scroll contentContainerStyle={styles.center}>
                 <HeaderBack/>
@@ -53,9 +83,13 @@ const Personal = () =>{
                             onPress={()=>setMode(3)}>
                         </RecordTab>
                     </RecordTabContainer>
-                    <Text>hihi</Text>
+                    {
+                        mode === 1? 
+                        <CreateSheet questions={questions} onSubmit = {()=>onSubmit()}></CreateSheet>
+                        :null
+                    }
 
-                    
+
                 </RecordBlock>
                 
 
@@ -66,6 +100,7 @@ const Personal = () =>{
                 <HeaderLeftRightBtton src={require("../../assets/Edit.png")}/>
             </Header>
         </Background>
+        // </Provider>
     )
 }
 
