@@ -44,7 +44,7 @@ const Personal = () =>{
     }, [])
 
     useEffect(()=>{
-        // console.log('questions1', questions);
+        console.log('questions1', questions);
     }, [questions])
 
     

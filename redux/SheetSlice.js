@@ -6,7 +6,7 @@ const mySheetSlice = createSlice({
     initialState: [
         {
             title: "卡路里",
-            type: "3choices", // linearObject
+            type: "2choices", // linearObject
             left: "<500",
             right: ">500",
             gid: '0',
@@ -45,6 +45,18 @@ const mySheetSlice = createSlice({
             state[index].right = action.payload.right;
             // console.log('title', title);
         },
+        onDelete: (state, action)=>{
+            // const index = state.findIndex((question)=> );
+            
+            return state.filter((question)=>question.gid !== action.payload.gid)
+            // state[index].right = action.payload.right;
+            // console.log('state:', state);
+            // console.log('title', title);
+        },
+        onChangeType: (state, action)=>{
+            const index = state.findIndex((question)=> question.gid === action.payload.gid);
+            state[index].type = action.payload.type;
+        }
         // submitSheet: async (state, action)=>{
         //     await postUpdateSheet(state);
         // }
@@ -53,5 +65,5 @@ const mySheetSlice = createSlice({
     }
 });
 
-export const {addQuestion, onChangeTitle, onChangeLeft, onChangeRight, submitSheet} = mySheetSlice.actions;
+export const {addQuestion, onChangeTitle, onChangeLeft, onChangeRight, onChangeType, onDelete} = mySheetSlice.actions;
 export default mySheetSlice.reducer;
