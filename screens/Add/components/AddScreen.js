@@ -31,15 +31,21 @@ const PhotoUploadImage = styled(Image)`
     height: 121px;
 `
 
-export const UploadingPhotoButton = ({camera, photo})=>{
+export const UploadingPhotoButton = ({camera, photo, image})=>{
     return (
-        <Row>
+        <Row>{
+            image?
+            <Image source={{uri: image}} style={{width: 310, height:310}}></Image>
+            :
+            <>
             <PhotoUploadButton onPress = {()=>camera()}>
                 <PhotoUploadImage source={require("../../../assets/camera.png")}/>
             </PhotoUploadButton>
             <PhotoUploadButton onPress = {()=>photo()}>
                 <PhotoUploadImage source={require("../../../assets/uploadPhoto.png")}/>
             </PhotoUploadButton>
+            </>
+            }
         </Row>
     )
 }

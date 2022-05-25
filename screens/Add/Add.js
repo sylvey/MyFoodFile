@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View , Image} from 'react-native';
+import { StyleSheet, Text, View , Image, Platform} from 'react-native';
 import { Background, Scroll } from '../../components/Screens';
 import Header, { HeaderCenterTitle, HeaderLeftRightButtonContainer, HeaderLeftRightButtonSubContainer } from '../../components/Header';
 import { HeaderBack, HeaderLeftLogo, HeaderLeftRightBtton, SearchBarContainer } from '../../components/Header';
@@ -7,13 +7,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { InputTextUp, Row, Title, UploadingPhotoButton, ValueInput, SmallTitle, SideImageContainer, SideImage } from './components/AddScreen';
 import { ScrollTagsFix } from '../../components/Tags';
 import { getFoodType } from '../../api/List';
-import MapView from 'react-native-maps';
-import { getMySheet } from '../../api/Add';
+import MapView, { Marker } from 'react-native-maps';
+import { getMySheet, postCreateFile } from '../../api/Add';
 import { SearchInput, Container } from '../../components/SearchBar';
 import { Inter_600SemiBold } from '@expo-google-fonts/inter';
 import { useNavigation } from '@react-navigation/native';
-
-
+import * as ImagePicker from 'expo-image-picker';
+import Constants from 'expo-constants';
+import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
+import * as FileSystem from "expo-file-system";
 
 const Add = () =>{
     const navigation = useNavigation();
@@ -22,15 +24,16 @@ const Add = () =>{
     const [mySheet, setMySheet] = useState([]);
     
     // for user input
+    const [image, setImage] = useState(null);
     const [restaurant, setRestaurant] = useState();    
     const [food, setFood] = useState('');
     const [price, setPrice] = useState('');
     const [type, setType] = useState('');
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [place, setPlace] = useState({ latitude: 25.0100, longitude: 121.3100});
     const [likeVal, setLikeVal] = useState(0);
     const [spicyVal, setSpicyVal] = useState(0);
     const [chosenSheet, setChosenSheet] = useState([]);
+    const [reminder, setReminder] = useState("");
 
     const fetchFoodType = async ()=>{
         const newData = await getFoodType("");
@@ -52,14 +55,58 @@ const Add = () =>{
     }
 
 
-    const onSubmit = ()=>{
-        console.log('restaurant', restaurant);
+    const onSubmit = async()=>{
+        // console.log('restaurant', restaurant);
+        // const imageData = new FormData();
+        // imageData.append("name", Date.now());
+        let imageData ;
+        if(image !== null){
+            imageData = await FileSystem.readAsStringAsync(image, {
+                encoding: FileSystem.EncodingType.Base64,
+            });
+            // imageData.append("file_attachment", base64);
+        }
+        // console.log('imageData', imageData);
+        // console.log(reminder);
+        await postCreateFile(imageData,restaurant, food, price, type, place, likeVal, spicyVal, chosenSheet);
+        navigation.goBack();
     }
 
     const setTag = (gid)=>{
         let newData = type;
         newData = newData + " #" + foodType[foodType.findIndex(x=>x.gid === gid)].title;
         setType(newData);
+    }
+    const PickImage = async()=>{
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [3, 3],
+            quality: 1
+        })
+        console.log(result);
+        if(!result.cancelled){
+            setImage(result.uri);
+        }
+    }
+
+    const setLocation = (e)=>{
+        console.log("native event:",e.nativeEvent);
+        setPlace(e.nativeEvent.coordinate);
+
+    }
+
+    const UseCamera = async()=>{
+        let result = await ImagePicker.launchCameraAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [3, 3],
+            quality: 1,
+        })
+        console.log(result);
+        if(!result.cancelled){
+            setImage(result.uri);
+        }
     }
 
     useEffect(async()=>{
@@ -78,13 +125,27 @@ const Add = () =>{
         console.log("chosensheet:", chosenSheet);
     }, [mySheet])
 
+    useEffect(async()=>{
+        if(Platform.OS !== 'web'){
+            const { status} = await ImagePicker.requestMediaLibraryPermissionsAsync();
+            if(status !== 'granted'){
+                alert('Library Permission denied')
+            }
+            const cameraP = await ImagePicker.requestCameraPermissionsAsync();
+            if(cameraP.status !== 'granted'){
+                alert('Camera Permission denied')
+            }
+        }
+    },[])
+    
     
 
     return (
         <Background>
             <Scroll>
-                <HeaderBack></HeaderBack>
-                <UploadingPhotoButton></UploadingPhotoButton>
+                <HeaderBack></HeaderBack>    
+                <UploadingPhotoButton camera={UseCamera} photo={PickImage} image={image}></UploadingPhotoButton>
+              
                 <InputTextUp 
                     title={"餐廳名稱"}
                     value={restaurant}
@@ -113,7 +174,7 @@ const Add = () =>{
                 <SmallTitle title={"餐廳位置"}></SmallTitle>  
                 <Row>
                     <MapView
-                        onPress={(e)=>{console.log("native event:",e.nativeEvent)}}
+                        onPress={(e)=>setLocation(e)}
                         style={{height: 140, width: 310, borderColor:'black', borderWidth:4}}
                         initialRegion={{
                             latitude: 25.0100,
@@ -121,7 +182,11 @@ const Add = () =>{
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}
-                    ></MapView>
+                    >
+                        <Marker
+                            coordinate={place}
+                        />
+                    </MapView>
                 </Row> 
                 <ValueInput 
                     title={"喜好程度"} 
@@ -161,7 +226,7 @@ const Add = () =>{
                         <SideImage source={require("../../assets/reminder.png")}></SideImage>
                     </SideImageContainer>
                 <Container>
-                    <SearchInput selectionColor={'#F16719'} placeholder={"備註"}></SearchInput>
+                    <SearchInput value = {reminder} onChangeText={(text)=>setReminder(text)} selectionColor={'#F16719'} placeholder={"備註"}></SearchInput>
                 </Container>
                 </Row>
             </Scroll>
