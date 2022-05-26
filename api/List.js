@@ -1,7 +1,7 @@
 import FoodType from "../hardData/FoodType";
 import ListData from "../hardData/ListData";
 
-export const getListData = async (tag, keyword, startDate, endDate) =>{
+export const getListData = async (tag, keyword, startDay, endDay) =>{
     return ListData; // 單次回傳 N 個
 }
 
