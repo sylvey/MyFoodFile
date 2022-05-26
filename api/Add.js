@@ -1,11 +1,11 @@
 import MySheet from "../hardData/MySheet"
 
-export const getMySheet = async() =>{ // 拿到我的表單 .... 我要傳什麼??
+export const getMySheet = async(userName) =>{ // 拿到我的表單 .... 我要傳什麼??
     return MySheet;
 }
 
 export const postCreateFile = async(
-    // userName, //使用者名稱
+//     userName, //使用者名稱
     image, //圖片 一個base64的東西
     restaurant, // 餐廳名稱
     food, // 餐點名稱
