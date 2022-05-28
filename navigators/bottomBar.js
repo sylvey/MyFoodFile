@@ -133,6 +133,6 @@ const styles = StyleSheet.create({
     position:'relative',
     width: 28,
     height: 28,
-    tintColor: colors.yellowDark
+    tintColor: '#BC8D14'
   }
 })

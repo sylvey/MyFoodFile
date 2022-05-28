@@ -4,20 +4,20 @@ import { postUpdateSheet } from "../api/Personal";
 const mySheetSlice = createSlice({
     name: "mySheet",
     initialState: [
-        {
-            title: "卡路里",
-            type: "2choices", // linearObject
-            left: "<500",
-            right: ">500",
-            gid: '0',
-        },
-        {
-            title: "卡路里",
-            type: "3choices", // linearObject
-            left: "<500",
-            right: ">500",
-            gid: '2',
-        },
+        // {
+        //     title: "卡路里",
+        //     type: "2choices", // linearObject
+        //     left: "<500",
+        //     right: ">500",
+        //     gid: '0',
+        // },
+        // {
+        //     title: "卡路里",
+        //     type: "3choices", // linearObject
+        //     left: "<500",
+        //     right: ">500",
+        //     gid: '2',
+        // },
     ],
     reducers: {
         addQuestion: (state, action)=>{

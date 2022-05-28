@@ -45,17 +45,18 @@ const MoreIcon = styled(Image)`
 
 const DateTime = styled(Text)`
     fontWeight: 500;
-    fontFamily: Inter-Black;
     color: #000000;
 `
+// fontFamily: Inter-Black;
 const Title = styled(Text)`
     fontWeight: 500;
-    fontFamily: Inter-Black;
     color: #817F7F;
     font-style: normal;
     width: 100%;
 `
 // color: #343434,
+
+// fontFamily: Inter-Black;
 
 const IconContainer = styled(View)`
     display: flex;

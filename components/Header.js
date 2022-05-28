@@ -56,8 +56,8 @@ const Title = styled(Text)`
     color: #817F7F;
     font-size: 24;
     font-weight: bold;
-    font-family: 'Inter-Black';
 `
+// font-family: 'Inter-Black';
 const HeaderLeftRightBtton = ({src, onPress}) =>{
     return(
         <HeaderLeftRightButtonContainer>

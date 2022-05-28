@@ -9,6 +9,7 @@ import * as Progress from 'react-native-progress';
 import ListItem from './components/ListItem';
 import { ScrollTags, ScrollTagsBack, Tag } from '../../components/Tags';
 import { useNavigation } from '@react-navigation/native';
+import moment from "moment";
 
 
 const List = () =>{
@@ -27,13 +28,20 @@ const List = () =>{
 
     const fetchNewData = async ()=>{
         setIsLoading(true);
-        const newData = await getListData(tag, keyword);
+
+        let startDay = moment().format("MMM DD");
+        console.log(startDay);
+        let endDay = moment().subtract(10, 'days').format("MMM DD");
+        console.log(endDay);
+
+        const newData = await getListData(tag, keyword, startDay, endDay);
         setListData([...listData, ...newData]);
         console.log("new data: ",newData);
+        // setIsLoading(false);
     }
 
     const fetchFoodType = async ()=>{
-        const newData = await getFoodType("");
+        const newData = await getFoodType();
         setFoodType(newData);
         console.log("tags", newData);
     }
@@ -53,6 +61,7 @@ const List = () =>{
         console.log('useEffect');
         await fetchNewData();
         await fetchFoodType();
+        setIsLoading(false);
     },[])
 
     return (

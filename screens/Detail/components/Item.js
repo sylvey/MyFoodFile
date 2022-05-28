@@ -45,16 +45,16 @@ const MoreIcon = styled(Image)`
 
 const DateTime = styled(Text)`
     fontWeight: 500;
-    fontFamily: Inter-Black;
     color: #000000;
 `
+// fontFamily: Inter-Black;
 const Title = styled(Text)`
     fontWeight: 500;
-    fontFamily: Inter-Black;
     color: #817F7F;
     font-style: normal;
     width: 100%;
 `
+// fontFamily: Inter-Black;
 // color: #343434,
 
 const IconContainer = styled(View)`

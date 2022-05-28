@@ -14,7 +14,8 @@ const SignUp = () =>{
 
     const navigation = useNavigation();
     const onNext = async ()=>{
-        const canSignUp = await PostSignUp({userName, passWord});
+        console.log('on next');
+        const canSignUp = await PostSignUp({userName, password: passWord});
         if(canSignUp){
             alert('Successfully Signed Up');
             navigation.goBack();
@@ -31,14 +32,17 @@ const SignUp = () =>{
             <BackButton/>
             <Text style={styles.title}>{"Register"}</Text>
             <TextInput 
+                selectionColor={"black"}
                 style={styles.input} 
                 value={userName}
                 onChangeText={(text)=>setUserName(text)}
             ></TextInput>
             <TextInput 
+                selectionColor={"black"}
                 style={styles.input} 
                 value={passWord}
                 onChangeText={(text)=>setPassWord(text)}
+                secureTextEntry={true}
             ></TextInput>
             <SubmitButton title={"Next"} style = {styles.submit} onPress={()=>{onNext()}}/>
         </View>

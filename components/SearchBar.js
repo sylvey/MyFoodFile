@@ -27,11 +27,15 @@ export const SearchInput = styled(TextInput)`
 
 
 
-const SearchBar = () =>{
+const SearchBar = ({value, onChangeText}) =>{
     return (
         <Container>
             <SearchIcon source={require("../assets/search.png")}></SearchIcon>
-            <SearchInput selectionColor={'#F16719'} placeholder={"search for food file"}></SearchInput>
+            <SearchInput 
+                value = {value} 
+                onChangeText={(text)=>onChangeText(text)} 
+                selectionColor={'#F16719'} 
+                placeholder={"search for food file"}></SearchInput>
         </Container>
     )
 }

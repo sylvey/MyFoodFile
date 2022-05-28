@@ -6,6 +6,7 @@ import SubmitButton from '../components/SubmitButton';
 import styles from './styles';
 import React, { useState, useEffect } from 'react';
 import { PostLogin } from '../../../api/Sign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const SignIn = () =>{
@@ -15,8 +16,9 @@ const SignIn = () =>{
 
     const naviation = useNavigation();
     const onLogin = async () =>{
-        const canLogin = await PostLogin({userName, passWord});
+        const canLogin = await PostLogin({userName, password: passWord});
         if(canLogin){
+            await AsyncStorage.setItem('@userName', userName);
             naviation.navigate("Main");
             alert('Log In Succeed');
         }
@@ -30,14 +32,18 @@ const SignIn = () =>{
             <BackButton/>
             <Text style={styles.title}>{"Log in"}</Text>
             <TextInput 
+                selectionColor={"black"}
                 style={styles.input} 
                 value={userName}
                 onChangeText={(text)=>setUserName(text)}
             ></TextInput>
             <TextInput 
+                selectionColor={"black"}
                 style={styles.input} 
                 value={passWord}
-                onChangeText={(text)=>setPassWord(text)}></TextInput>
+                onChangeText={(text)=>setPassWord(text)}
+                secureTextEntry={true}
+            ></TextInput>
             <SubmitButton title={"Login"} style = {styles.submit} onPress = {()=>onLogin()}/>
         </View>
     )

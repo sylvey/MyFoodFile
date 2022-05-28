@@ -8,11 +8,17 @@ import { getDailyData } from '../api/Home';
 import * as Progress from 'react-native-progress';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MaskedViewComponent } from '@react-native-masked-view/masked-view';
+import moment from "moment"
+
 
 
 const Home = () =>{
+    const [userName, setUserName] = useState();
     const [dailyData, setDailyData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [keyword, setKeyWord] = useState('');
     const navigation = useNavigation();
 
     const toDetail = (gid) =>{
@@ -46,7 +52,13 @@ const Home = () =>{
 
     const fetchNewData = async ()=>{
         setIsLoading(true);
-        const newData = await getDailyData();
+        
+        let startDay = moment().format("MMM DD");
+        console.log(startDay);
+        let endDay = moment().subtract(10, 'days').format("MMM DD");
+        console.log(endDay);
+
+        const newData = await getDailyData(userName, keyword, startDay, endDay);
         setDailyData([...dailyData, ...newData]);
         
     }
@@ -62,13 +74,27 @@ const Home = () =>{
     }
     
     useEffect( async ()=>{
-        await fetchNewData();
+        const name = await AsyncStorage.getItem('@userName');
+        setUserName(name);
+        console.log('username:', name);
     },[])
+
+    useEffect(async()=>{
+        if(userName){
+            console.log('username2:', userName);
+            await fetchNewData();
+        }
+    },[userName])
 
     useEffect( ()=>{
         setIsLoading(false);
-        console.log(dailyData);
+        // console.log(dailyData);
     }, [dailyData])
+
+    // useEffect( ()=>{
+    //     // setIsLoading(false);
+    //     console.log('key', keyword);
+    // }, [keyword])
 
 
     return (
@@ -86,7 +112,12 @@ const Home = () =>{
             </Scroll>
             <Header>
                 <HeaderLeftLogo src={require("../assets/homeLogo.png")}></HeaderLeftLogo>
-                <SearchBarContainer><SearchBar/></SearchBarContainer>
+                <SearchBarContainer>
+                    <SearchBar 
+                        value={keyword}
+                        onChangeText={setKeyWord}
+                    />
+                </SearchBarContainer>
             </Header>
         </Background>
     )
@@ -98,7 +129,7 @@ const styles = StyleSheet.create({
     text:{
         color: '#343434',
         fontWeight: '500',
-        fontFamily: 'Inter-Black'
+        // fontFamily: 'Inter-Black'
     },
     center: {
         display: 'flex',

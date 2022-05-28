@@ -10,12 +10,13 @@ import { getFoodType } from '../../api/List';
 import MapView, { Marker } from 'react-native-maps';
 import { getMySheet, postCreateFile } from '../../api/Add';
 import { SearchInput, Container } from '../../components/SearchBar';
-import { Inter_600SemiBold } from '@expo-google-fonts/inter';
+// import { Inter_600SemiBold } from '@expo-google-fonts/inter';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
 import * as FileSystem from "expo-file-system";
+
 
 const Add = () =>{
     const navigation = useNavigation();
@@ -190,7 +191,7 @@ const Add = () =>{
                 </Row> 
                 <ValueInput 
                     title={"喜好程度"} 
-                    type={"3choices"} 
+                    type={"5choices"} 
                     sideType={"image"} 
                     setValue={setLikeVal}
                     value={likeVal}
@@ -198,7 +199,7 @@ const Add = () =>{
                     right ={require("../../assets/like5.png")}/>
                 <ValueInput 
                     title={"辛辣程度"} 
-                    type={"5choices"} 
+                    type={"3choices"} 
                     sideType={"image"} 
                     setValue={setSpicyVal}
                     value={spicyVal}
