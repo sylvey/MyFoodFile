@@ -1,7 +1,25 @@
 import MySheet from "../hardData/MySheet"
+import axios from "../api/axios";
 
 export const getMySheet = async(userName) =>{ // 拿到我的表單 .... 我要傳什麼??
-    return MySheet;
+    // console.log('here', userName, password);
+    if(userName){
+        try{
+            let res = await axios.get("/getMySheet", {userName});
+            console.log('getMy sheet here')
+            console.log(res.status);
+            if(res.status === 200){
+                console.log('res mysheet', res.data);
+                return res.data; // 驗證過可以
+            }
+        }
+        catch(e){
+            console.log('error', e);
+        }
+        
+    }
+    
+    return [];
 }
 
 export const postCreateFile = async(

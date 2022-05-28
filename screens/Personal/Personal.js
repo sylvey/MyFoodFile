@@ -6,46 +6,49 @@ import { Background, Scroll } from '../../components/Screens';
 import { ProfileBackground, ProfileImage, Name, PersonalDetail } from './components/Profile';
 import { RecordBlock, RecordTab, RecordTabContainer } from './components/Record';
 import store from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import { init } from '../../redux/SheetSlice';
+// import { useDispatch } from 'react-redux';
 import { Provider, useSelector } from 'react-redux';
 import CreateSheet from './subPage/CreateSheet';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+import { getMySheet } from '../../api/Add';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Personal = () =>{
 
     const [user, setUser] = useState(null);
     const [mode, setMode] = useState(1); // 1 for 設定題目, 2 for 紀錄戰果, 3 for 圖表秀秀
-    
-    const questions = useSelector((state)=> state.mySheet);
+    const dispatch = useDispatch();
+
     const onSubmit = async()=>{
         await postUpdateSheet(questions);
     }
-    // const [questions, setQuestions] = useState([
-    //     {
-    //         title: "卡路里",
-    //         type: "3choices", // linearObject
-    //         left: "<500",
-    //         right: ">500",
-    //         gid: '0',
-    //     },
-    //     {
-    //         title: "卡路里",
-    //         type: "3choices", // linearObject
-    //         left: "<500",
-    //         right: ">500",
-    //         gid: '2',
-    //     },
-    // ]);
+    
+
 
     useEffect(async () => {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
+        console.log('useEffect personal');
+        const currentUser = await getCurrentUser();
+        setUser(currentUser);
+        const userName = await AsyncStorage.getItem('@userName');
+        console.log('userName personal', userName);
+
+        const mySheet = await getMySheet(userName);
+
+        console.log('mysheet', mySheet);
+        dispatch(init(mySheet));
+        console.log('questions', questions);
     //   console.log(currentUser);
     //   console.log('questions1:', questions);
     }, [])
 
+    const questions = useSelector((state)=> state.mySheet);
     useEffect(()=>{
         console.log('questions1', questions);
     }, [questions])
+
+    
 
     
     

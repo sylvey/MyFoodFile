@@ -56,7 +56,14 @@ const mySheetSlice = createSlice({
         onChangeType: (state, action)=>{
             const index = state.findIndex((question)=> question.gid === action.payload.gid);
             state[index].type = action.payload.type;
-        }
+        },
+        init: (state, action)=>{
+            console.log('payload:', action.payload);
+            action.payload.forEach(item => {
+                state.push(item);
+            });;
+            console.log('state', state);
+        },
         // submitSheet: async (state, action)=>{
         //     await postUpdateSheet(state);
         // }
@@ -65,5 +72,5 @@ const mySheetSlice = createSlice({
     }
 });
 
-export const {addQuestion, onChangeTitle, onChangeLeft, onChangeRight, onChangeType, onDelete} = mySheetSlice.actions;
+export const {addQuestion, onChangeTitle, onChangeLeft, onChangeRight, onChangeType, onDelete, init} = mySheetSlice.actions;
 export default mySheetSlice.reducer;
