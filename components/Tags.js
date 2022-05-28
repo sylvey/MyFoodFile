@@ -48,7 +48,7 @@ export const Tag = ({item}, {chosen, setTag}) =>{
                 <TagTextChosen>{item.title}</TagTextChosen>
             </TagContainerChosen>
             :
-            <TagContainer onPress = {()=>setTag(item.gid)}>
+            <TagContainer onPress = {()=>setTag(item.title)}>
                 <TagText>{item.title}</TagText>
             </TagContainer>
         }
@@ -93,7 +93,7 @@ export const ScrollTags = ({foodType, tag, setTag}) =>{
               data={foodType}
               contentContainerStyle={styles.listRowContainer}
               horizontal={ true }
-              renderItem={(item)=>Tag(item, { chosen: item.item.gid === tag, setTag})}
+              renderItem={(item)=>Tag(item, { chosen: item.item.title === tag, setTag})}
               keyExtractor={item => item.gid}
             />
         </TagsScrollContainer>

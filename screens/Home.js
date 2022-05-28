@@ -11,10 +11,12 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaskedViewComponent } from '@react-native-masked-view/masked-view';
 import moment from "moment"
+import { useIsFocused } from "@react-navigation/native";
 
 
+const Home = (prop) =>{
+    const isFocused = useIsFocused();
 
-const Home = () =>{
     const [userName, setUserName] = useState();
     const [dailyData, setDailyData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +30,7 @@ const Home = () =>{
     
     const file = ({item})=>
         <TouchableOpacity onPress={()=>toDetail(item.gid)}>
-            <Image style={styles.fileImage} source={require("../hardData/Photo.png")}></Image>
+            <Image style={styles.fileImage} source={{uri: 'data:image/png;base64,'+item.photo}}></Image>
         </TouchableOpacity>
         
 
@@ -50,17 +52,14 @@ const Home = () =>{
             </ScrollView>
         </View>
 
-    const fetchNewData = async ()=>{
+    const fetchNewData = async (startDay, endDay)=>{
         setIsLoading(true);
-        
-        let startDay = moment().format("MMM DD");
-        console.log(startDay);
-        let endDay = moment().subtract(10, 'days').format("MMM DD");
-        console.log(endDay);
 
-        const newData = await getDailyData(userName, keyword, startDay, endDay);
-        setDailyData([...dailyData, ...newData]);
-        
+        const name = await AsyncStorage.getItem('@userName');
+
+        const newData = await getDailyData(name, keyword, startDay, endDay);
+        setDailyData([...newData]);
+        setIsLoading(false);
     }
 
     const loader = ()=>{
@@ -73,28 +72,40 @@ const Home = () =>{
         }</>
     }
     
-    useEffect( async ()=>{
-        const name = await AsyncStorage.getItem('@userName');
-        setUserName(name);
-        console.log('username:', name);
-    },[])
+    const loadMore = async(item)=>{
+        console.log('item', item);
+    }
 
     useEffect(async()=>{
-        if(userName){
+        // if(userName){
             console.log('username2:', userName);
-            await fetchNewData();
-        }
-    },[userName])
+            let endDay = moment().format("MMM DD");
+            console.log(endDay);
+            let startDay = moment().subtract(10, 'days').format("MMM DD");
+            console.log(endDay);
+            setIsLoading(true);
+            await fetchNewData(startDay, endDay);
+            setIsLoading(false);
+        // }
+    },[isFocused, prop])
 
-    useEffect( ()=>{
+
+    const fetchSearchData = async ()=>{
+        setIsLoading(true);
+
+        const name = await AsyncStorage.getItem('@userName');
+        let endDay = moment().format("MMM DD");
+        console.log(endDay);
+        const newData = await getDailyData(name, keyword, "Jun 01", endDay);
+        setDailyData([...newData]);
         setIsLoading(false);
-        // console.log(dailyData);
-    }, [dailyData])
+    }
 
-    // useEffect( ()=>{
-    //     // setIsLoading(false);
-    //     console.log('key', keyword);
-    // }, [keyword])
+    useEffect( async()=>{
+        // setIsLoading(false);
+        fetchSearchData();
+        console.log('key', keyword);
+    }, [keyword])
 
 
     return (
@@ -104,7 +115,7 @@ const Home = () =>{
                 <FlatList
                     data={dailyData}
                     style={styles.listContainer}
-                    // onEndReached ={fetchNewData}
+                    onEndReached ={item=>loadMore(item)}
                     renderItem={DailyDataItem}
                     ListFooterComponent={loader}
                     keyExtractor={item=>item.date}

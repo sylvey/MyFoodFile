@@ -76,7 +76,7 @@ const DetailItem = ({item})=>{
     return(
         <Container>
             <ListButton>
-                <Photo source={require('../../../hardData/photoInList.png')}></Photo>
+                <Photo source={{uri: 'data:image/png;base64,'+ item.photo}}></Photo>
                 <CenterContainer>
                     <DateTime>{item.date + " " + item.time}</DateTime>
                     <Title>{item.restaurant}</Title>
@@ -103,7 +103,7 @@ const DetailItem = ({item})=>{
                     : null}
                     <Title numberOfLines={25}>
                         {item.linearObjects.map(item=>"#"+item.title+item.value  + " ")}
-                        {item.stringObjects.map(item=>"#"+item.value  + " ")}
+                        {item.stringObjects.map(item=>"#"+item.title+item.value  + " ")}
                     </Title>
                 </CenterContainer>
             </ListButton>

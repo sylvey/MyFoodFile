@@ -59,6 +59,7 @@ const mySheetSlice = createSlice({
         },
         init: (state, action)=>{
             console.log('payload:', action.payload);
+            state.splice(0, state.length);
             action.payload.forEach(item => {
                 state.push(item);
             });;

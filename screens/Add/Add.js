@@ -16,11 +16,11 @@ import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
 import * as FileSystem from "expo-file-system";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Add = () =>{
     const navigation = useNavigation();
-
     const [foodType, setFoodType] = useState([]);
     const [mySheet, setMySheet] = useState([]);
     
@@ -37,13 +37,16 @@ const Add = () =>{
     const [reminder, setReminder] = useState("");
 
     const fetchFoodType = async ()=>{
-        const newData = await getFoodType("");
+        console.log('fetFood type');
+        const newData = await getFoodType();
         setFoodType(newData);
         console.log("tags", newData);
     }
 
     const fetchMySheet = async()=>{
-        const newData = await getMySheet();
+        console.log('fetch my sheet');
+        const name = await AsyncStorage.getItem('@userName');
+        const newData = await getMySheet(name);
         setMySheet(newData);
         console.log("my sheet", newData);
     }
@@ -57,25 +60,24 @@ const Add = () =>{
 
 
     const onSubmit = async()=>{
-        // console.log('restaurant', restaurant);
-        // const imageData = new FormData();
-        // imageData.append("name", Date.now());
         let imageData ;
         if(image !== null){
             imageData = await FileSystem.readAsStringAsync(image, {
                 encoding: FileSystem.EncodingType.Base64,
             });
-            // imageData.append("file_attachment", base64);
         }
-        // console.log('imageData', imageData);
-        // console.log(reminder);
-        await postCreateFile(imageData,restaurant, food, price, type, place, likeVal, spicyVal, chosenSheet);
+
+        const userName = await AsyncStorage.getItem('@userName');
+
+        
+
+        await postCreateFile(userName, imageData, restaurant, food, price, type, place, likeVal, spicyVal, chosenSheet, reminder);
         navigation.goBack();
     }
 
-    const setTag = (gid)=>{
+    const setTag = (title)=>{
         let newData = type;
-        newData = newData + " #" + foodType[foodType.findIndex(x=>x.gid === gid)].title;
+        newData = foodType[foodType.findIndex(x=>x.title === title)].title;
         setType(newData);
     }
     const PickImage = async()=>{
@@ -112,9 +114,12 @@ const Add = () =>{
 
     useEffect(async()=>{
         console.log('useEffect');
+        
+        // await setUserName(name);
+        // console.log('username:', name);
         await fetchFoodType();
         await fetchMySheet();
-    })
+    }, [])
 
     // set chosen
     useEffect(()=>{
@@ -166,6 +171,7 @@ const Add = () =>{
                     <InputTextUp 
                         title={"類別"}
                         value={type}
+                        onChange={setType}
                     ></InputTextUp>
                     <ScrollTagsFix
                         foodType={foodType !== []? foodType: []}  

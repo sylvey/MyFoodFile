@@ -77,7 +77,7 @@ const ListItem = ({item}, {toDetail})=>{
     return(
         <Container>
             <ListButton onPress={()=>toDetail(item.gid)}>
-                <Photo source={require('../../../hardData/photoInList.png')}></Photo>
+                <Photo source={{uri: 'data:image/png;base64,'+item.photo}}></Photo>
                 <CenterContainer>
                     <DateTime>{item.date + " " + item.time}</DateTime>
                     <Title>{item.restaurant}</Title>
@@ -90,18 +90,16 @@ const ListItem = ({item}, {toDetail})=>{
                         {item.likeVal === 5? <Icon source={require('../../../assets/like5.png')}/>: null}
 
                         {item.spicyVal === 1? <Icon source={require('../../../assets/Spicy1.png')}/>: null}
-                        {item.spicyVal === 2? <Icon source={require('../../../assets/Spicy1.png')}/>: null}
-                        {item.spicyVal === 3? <Icon source={require('../../../assets/Spicy3.png')}/>: null}
-                        {item.spicyVal === 4? <Icon source={require('../../../assets/Spicy3.png')}/>: null}
-                        {item.spicyVal === 5? <Icon source={require('../../../assets/Spicy5.png')}/>: null}
+                        {item.spicyVal === 2? <Icon source={require('../../../assets/Spicy3.png')}/>: null}
+                        {item.spicyVal === 3? <Icon source={require('../../../assets/Spicy5.png')}/>: null}
 
                         {item.reminder? <Icon source={require('../../../assets/reminder.png')}/>: null}
 
                         {/* <Icon source={require()}/> */}
                     </IconContainer>
                     <Title numberOfLines={1}>
-                        {item.linearObjects.map(item=>"#"+item.title+item.value)}
-                        {item.stringObjects.map(item=>"#"+item.value)}
+                        {item.linearObjects.map(i=>"#"+i.title+i.value)}
+                        {item.stringObjects.map(i=>"#"+i.title+i.value)}
                     </Title>
                 </CenterContainer>
             </ListButton>

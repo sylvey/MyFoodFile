@@ -10,11 +10,14 @@ import ListItem from './components/ListItem';
 import { ScrollTags, ScrollTagsBack, Tag } from '../../components/Tags';
 import { useNavigation } from '@react-navigation/native';
 import moment from "moment";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused } from "@react-navigation/native";
 
+const List = (props) =>{
+    const isFocused = useIsFocused();
 
-const List = () =>{
     const [listData, setListData] = useState([]);
-    const [tag, setTag] = useState('1');
+    const [tag, setTag] = useState('');
     const [keyword, setKeyword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [foodType, setFoodType] = useState([]);
@@ -28,14 +31,15 @@ const List = () =>{
 
     const fetchNewData = async ()=>{
         setIsLoading(true);
+        const userName = await AsyncStorage.getItem('@userName');
 
-        let startDay = moment().format("MMM DD");
-        console.log(startDay);
-        let endDay = moment().subtract(10, 'days').format("MMM DD");
+        let endDay = moment().format("MMM DD");
         console.log(endDay);
+        let startDay = moment().subtract(10, 'days').format("MMM DD");
+        console.log(startDay);
 
-        const newData = await getListData(tag, keyword, startDay, endDay);
-        setListData([...listData, ...newData]);
+        const newData = await getListData(userName, tag, keyword, startDay, endDay);
+        setListData([...newData]);
         console.log("new data: ",newData);
         // setIsLoading(false);
     }
@@ -59,10 +63,12 @@ const List = () =>{
 
     useEffect(async()=>{
         console.log('useEffect');
-        await fetchNewData();
         await fetchFoodType();
+        setTimeout(async()=>{
+            await fetchNewData();
+        }, 3000);
         setIsLoading(false);
-    },[])
+    },[props, isFocused])
 
     return (
         <Background>
