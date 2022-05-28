@@ -22,17 +22,19 @@ const Personal = () =>{
     const dispatch = useDispatch();
 
     const onSubmit = async()=>{
-        await postUpdateSheet(questions);
+        console.log('onSubmit:', questions);
+        await postUpdateSheet(user.name, questions);
     }
     
 
 
     useEffect(async () => {
         console.log('useEffect personal');
-        const currentUser = await getCurrentUser();
-        setUser(currentUser);
         const userName = await AsyncStorage.getItem('@userName');
         console.log('userName personal', userName);
+        const currentUser = await getCurrentUser(userName);
+        setUser(currentUser);
+        
 
         const mySheet = await getMySheet(userName);
 

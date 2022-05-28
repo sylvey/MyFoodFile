@@ -5,7 +5,7 @@ export const getMySheet = async(userName) =>{ // 拿到我的表單 .... 我要�
     // console.log('here', userName, password);
     if(userName){
         try{
-            let res = await axios.get("/getMySheet", {userName});
+            let res = await axios.post("/getMySheet", {userName});
             console.log('getMy sheet here')
             console.log(res.status);
             if(res.status === 200){
@@ -23,7 +23,7 @@ export const getMySheet = async(userName) =>{ // 拿到我的表單 .... 我要�
 }
 
 export const postCreateFile = async(
-//     userName, //使用者名稱
+    // userName, //使用者名稱
     image, //圖片 一個base64的東西
     restaurant, // 餐廳名稱
     food, // 餐點名稱

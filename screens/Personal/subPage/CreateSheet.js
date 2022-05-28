@@ -41,6 +41,7 @@ export default CreateSheet = ({questions, onSubmit}) =>{
     }
     const onChangeTypeText = (gid, e)=>{
         console.log('e', e);
+        onSubmit();
         dispatch(onChangeType({gid, type: e.value}));
     }
     const onDeleteQuestion = (gid)=>{
@@ -56,7 +57,7 @@ export default CreateSheet = ({questions, onSubmit}) =>{
     //     await dispatch(submitSheet());
     // }
     
-    console.log('increate sheet:', questions);
+    // console.log('increate sheet:', questions);
     return (
         <>
         
