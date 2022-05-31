@@ -77,7 +77,8 @@ const ListItem = ({item}, {toDetail})=>{
     return(
         <Container>
             <ListButton onPress={()=>toDetail(item.gid)}>
-                <Photo source={{uri: 'data:image/png;base64,'+item.photo}}></Photo>
+                <Photo source={{uri:  'data:image/png;base64,'+item.photo}}></Photo>
+                {/* 'data:image/png;base64,'+ */}
                 <CenterContainer>
                     <DateTime>{item.date + " " + item.time}</DateTime>
                     <Title>{item.restaurant}</Title>

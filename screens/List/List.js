@@ -10,7 +10,7 @@ import ListItem from './components/ListItem';
 import { ScrollTags, ScrollTagsBack, Tag } from '../../components/Tags';
 import { useNavigation } from '@react-navigation/native';
 import moment from "moment";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorage } from 'react-native';
 import { useIsFocused } from "@react-navigation/native";
 
 const List = (props) =>{

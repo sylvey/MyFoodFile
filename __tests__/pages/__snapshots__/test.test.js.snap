@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailItem 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 125,
+        "marginBottom": 25,
+        "marginTop": 4,
+        "width": 372,
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "data:image/png;base64,",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "height": 122,
+            "width": 122,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "height": 122,
+            "marginLeft": 5,
+            "width": 230,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontWeight": "500",
+            },
+          ]
+        }
+      >
+        Feb 09 19:25
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#817F7F",
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        麻古茶房台北公館店
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#817F7F",
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        芒果芝芝
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "height": 25,
+            },
+          ]
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Array [
+              Object {
+                "height": 25,
+                "marginRight": 2,
+                "width": 25,
+              },
+            ]
+          }
+        />
+        <Image
+          source={1}
+          style={
+            Array [
+              Object {
+                "height": 25,
+                "marginRight": 2,
+                "width": 25,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "height": 25,
+            },
+          ]
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Array [
+              Object {
+                "height": 25,
+                "marginRight": 2,
+                "width": 25,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#817F7F",
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          店員人很好，下次要要電話
+        </Text>
+      </View>
+      <Text
+        numberOfLines={25}
+        style={
+          Array [
+            Object {
+              "color": "#817F7F",
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        #甜度5 
+        #甜度5 
+        #甜度5 
+        #甜度5 
+        #甜度5 
+        #果醬或水果?果醬 
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "width": 16,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Array [
+            Object {
+              "height": 15,
+              "width": 15,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`MapScreen 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+      },
+    ]
+  }
+>
+  <AIRMap
+    handlePanDrag={false}
+    initialRegion={
+      Object {
+        "latitude": 25.01,
+        "latitudeDelta": 0.0922,
+        "longitude": 121.31,
+        "longitudeDelta": 0.0421,
+      }
+    }
+    onChange={[Function]}
+    onLayout={[Function]}
+    onMapReady={[Function]}
+    onMarkerPress={[Function]}
+    onPress={[Function]}
+    region={null}
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "flex-end",
+          "backgroundColor": "rgba(255, 255, 255, 0.8)",
+          "borderBottomWidth": 1.2,
+          "borderColor": "#E0E0E0",
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 117,
+          "position": "absolute",
+          "width": 750,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 28,
+            "opacity": 1,
+            "width": 28,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Array [
+              Object {
+                "height": 28,
+                "tintColor": "#D0A129",
+                "width": 28,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 3,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#817F7F",
+              "fontSize": 24,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      >
+        我的紀錄
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 28,
+            "opacity": 1,
+            "width": 28,
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Array [
+              Object {
+                "height": 28,
+                "tintColor": "#D0A129",
+                "width": 28,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;

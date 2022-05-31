@@ -6,7 +6,7 @@ import SubmitButton from '../components/SubmitButton';
 import styles from './styles';
 import React, { useState, useEffect } from 'react';
 import { PostLogin } from '../../../api/Sign';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorage } from 'react-native';
 
 
 const SignIn = () =>{

@@ -13,7 +13,7 @@ import { Provider, useSelector } from 'react-redux';
 import CreateSheet from './subPage/CreateSheet';
 // import { useDispatch } from 'react-redux';
 import { getMySheet } from '../../api/Add';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorage } from 'react-native';
 
 const Personal = () =>{
 

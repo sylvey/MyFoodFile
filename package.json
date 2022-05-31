@@ -8,7 +8,14 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "prettier": "prettier 'src/**/*.js'"
+    "prettier": "prettier 'src/**/*.js'",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ]
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",
@@ -27,6 +34,8 @@
     "expo-image-picker": "~12.0.1",
     "expo-linear-gradient": "~11.0.3",
     "expo-status-bar": "~1.2.0",
+    "jest": "^26.6.3",
+    "jest-expo": "^45.0.1",
     "moment": "^2.29.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -46,7 +55,10 @@
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@testing-library/react-native": "^9.1.0",
+    "react-test-renderer": "17",
+    "redux-mock-store": "^1.5.4"
   },
   "resolutions": {
     "@reduxjs/toolkit/**/immer": "9.0.12"

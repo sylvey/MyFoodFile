@@ -8,7 +8,7 @@ import { getDailyData } from '../api/Home';
 import * as Progress from 'react-native-progress';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorage } from 'react-native';
 import { MaskedViewComponent } from '@react-native-masked-view/masked-view';
 import moment from "moment"
 import { useIsFocused } from "@react-navigation/native";
@@ -30,7 +30,8 @@ const Home = (prop) =>{
     
     const file = ({item})=>
         <TouchableOpacity onPress={()=>toDetail(item.gid)}>
-            <Image style={styles.fileImage} source={{uri: 'data:image/png;base64,'+item.photo}}></Image>
+            <Image style={styles.fileImage} source={{uri: 'data:image/png;base64,/'+item.photo}}></Image>
+            {/* 'data:image/png;base64,'+ */}
         </TouchableOpacity>
         
 
